@@ -3,6 +3,9 @@ com\eteg\modelo\Prescricao.class
 com\eteg\DAO\PrescricaoDAO.class
 com\eteg\Servico\MedicamentoServico.class
 com\eteg\Servico\MedicoServico.class
+com\eteg\Controle\PacienteControle.class
+com\eteg\Controle\GlobalExceptionHandler.class
+com\eteg\Controle\DispensacaoControle.class
 com\eteg\modelo\Paciente.class
 com\eteg\Servico\DispensacaoServicoImplementacao.class
 com\eteg\DAO\MedicoDAO.class
@@ -21,7 +24,9 @@ com\eteg\Servico\PrescricaoServico.class
 com\eteg\DAO\PacienteDAO.class
 com\eteg\modelo\Medico.class
 com\eteg\modelo\Medico_.class
+com\eteg\Controle\MedicoControle.class
 com\eteg\DAO\MedicamentoDAO.class
+com\eteg\Controle\PrescricaoControle.class
 com\eteg\modelo\Paciente_.class
 com\eteg\modelo\Medicamento_.class
 com\eteg\Servico\DispensacaoServico.class

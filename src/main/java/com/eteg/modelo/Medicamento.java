@@ -18,6 +18,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -40,11 +42,14 @@ public class Medicamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idMedicamento")
-    private Integer idMedicamento;
+    private Long idMedicamento;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "nome")
     private String nome;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "estoque")
     private int estoque;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicamentoidMedicamento")
@@ -55,21 +60,21 @@ public class Medicamento implements Serializable {
     public Medicamento() {
     }
 
-    public Medicamento(Integer idMedicamento) {
+    public Medicamento(Long idMedicamento) {
         this.idMedicamento = idMedicamento;
     }
 
-    public Medicamento(Integer idMedicamento, String nome, int estoque) {
+    public Medicamento(Long idMedicamento, String nome, int estoque) {
         this.idMedicamento = idMedicamento;
         this.nome = nome;
         this.estoque = estoque;
     }
 
-    public Integer getIdMedicamento() {
+    public Long getIdMedicamento() {
         return idMedicamento;
     }
 
-    public void setIdMedicamento(Integer idMedicamento) {
+    public void setIdMedicamento(Long idMedicamento) {
         this.idMedicamento = idMedicamento;
     }
 

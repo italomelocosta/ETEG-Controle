@@ -20,6 +20,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -41,8 +43,10 @@ public class Prescricao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idPrescricao")
-    private Integer idPrescricao;
+    private Long idPrescricao;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 12)
     @Column(name = "data")
     private String data;
     @JoinColumn(name = "Paciente_idPaciente", referencedColumnName = "idPaciente")
@@ -60,20 +64,20 @@ public class Prescricao implements Serializable {
     public Prescricao() {
     }
 
-    public Prescricao(Integer idPrescricao) {
+    public Prescricao(Long idPrescricao) {
         this.idPrescricao = idPrescricao;
     }
 
-    public Prescricao(Integer idPrescricao, String data) {
+    public Prescricao(Long idPrescricao, String data) {
         this.idPrescricao = idPrescricao;
         this.data = data;
     }
 
-    public Integer getIdPrescricao() {
+    public Long getIdPrescricao() {
         return idPrescricao;
     }
 
-    public void setIdPrescricao(Integer idPrescricao) {
+    public void setIdPrescricao(Long idPrescricao) {
         this.idPrescricao = idPrescricao;
     }
 

@@ -18,6 +18,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -41,14 +43,20 @@ public class Paciente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idPaciente")
-    private Integer idPaciente;
+    private Long idPaciente;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 80)
     @Column(name = "nome")
     private String nome;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 13)
     @Column(name = "cpf")
     private String cpf;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 12)
     @Column(name = "dtNasc")
     private String dtNasc;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacienteidPaciente")
@@ -57,22 +65,22 @@ public class Paciente implements Serializable {
     public Paciente() {
     }
 
-    public Paciente(Integer idPaciente) {
+    public Paciente(Long idPaciente) {
         this.idPaciente = idPaciente;
     }
 
-    public Paciente(Integer idPaciente, String nome, String cpf, String dtNasc) {
+    public Paciente(Long idPaciente, String nome, String cpf, String dtNasc) {
         this.idPaciente = idPaciente;
         this.nome = nome;
         this.cpf = cpf;
         this.dtNasc = dtNasc;
     }
 
-    public Integer getIdPaciente() {
+    public Long getIdPaciente() {
         return idPaciente;
     }
 
-    public void setIdPaciente(Integer idPaciente) {
+    public void setIdPaciente(Long idPaciente) {
         this.idPaciente = idPaciente;
     }
 

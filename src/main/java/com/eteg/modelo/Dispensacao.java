@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -37,8 +39,10 @@ public class Dispensacao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idDiespensacao")
-    private Integer idDiespensacao;
+    private Long idDiespensacao;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 12)
     @Column(name = "data")
     private String data;
     @JoinColumn(name = "Prescricao_idPrescricao", referencedColumnName = "idPrescricao")
@@ -51,20 +55,20 @@ public class Dispensacao implements Serializable {
     public Dispensacao() {
     }
 
-    public Dispensacao(Integer idDiespensacao) {
+    public Dispensacao(Long idDiespensacao) {
         this.idDiespensacao = idDiespensacao;
     }
 
-    public Dispensacao(Integer idDiespensacao, String data) {
+    public Dispensacao(Long idDiespensacao, String data) {
         this.idDiespensacao = idDiespensacao;
         this.data = data;
     }
 
-    public Integer getIdDiespensacao() {
+    public Long getIdDiespensacao() {
         return idDiespensacao;
     }
 
-    public void setIdDiespensacao(Integer idDiespensacao) {
+    public void setIdDiespensacao(Long idDiespensacao) {
         this.idDiespensacao = idDiespensacao;
     }
 

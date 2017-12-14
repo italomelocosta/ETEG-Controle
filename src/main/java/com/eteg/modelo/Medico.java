@@ -18,6 +18,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -39,8 +41,10 @@ public class Medico implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idMedico")
-    private Integer idMedico;
+    private Long idMedico;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 80)
     @Column(name = "nome")
     private String nome;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicoidMedico")
@@ -49,20 +53,20 @@ public class Medico implements Serializable {
     public Medico() {
     }
 
-    public Medico(Integer idMedico) {
+    public Medico(Long idMedico) {
         this.idMedico = idMedico;
     }
 
-    public Medico(Integer idMedico, String nome) {
+    public Medico(Long idMedico, String nome) {
         this.idMedico = idMedico;
         this.nome = nome;
     }
 
-    public Integer getIdMedico() {
+    public Long getIdMedico() {
         return idMedico;
     }
 
-    public void setIdMedico(Integer idMedico) {
+    public void setIdMedico(Long idMedico) {
         this.idMedico = idMedico;
     }
 

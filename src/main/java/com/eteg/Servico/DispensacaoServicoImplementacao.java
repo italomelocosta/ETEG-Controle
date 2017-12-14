@@ -5,36 +5,37 @@
  */
 package com.eteg.Servico;
 
-import com.eteg.DAO.DispensacaoDAO;
 import com.eteg.modelo.Dispensacao;
 import java.util.List;
 import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("dispensacaoServico")
 public class DispensacaoServicoImplementacao implements DispensacaoServico {
 
-    private DispensacaoDAO dispensacaoDAO;
+    @Autowired
+    private DispensacaoServico dispensacaoServico;
     
     @Override
     public Dispensacao findByIDispensacao(Long id) {
-        return dispensacaoDAO.findOne(id);
+        return dispensacaoServico.findByIDispensacao(id);
     }
 
     @Override
-    public List<Dispensacao> listAllDispensacoes() {
-        return dispensacaoDAO.findAll();
+    public List<Dispensacao> findAllDispensacoes() {
+        return dispensacaoServico.findAllDispensacoes();
     }
 
     @Override
     @Transactional
     public void save(Dispensacao dispensacao) {
-        dispensacaoDAO.save(dispensacao);
+        dispensacaoServico.save(dispensacao);
     }
 
     @Override
     public void delete(Long id) {
-        dispensacaoDAO.delete(id);
+        dispensacaoServico.delete(id);
     }
     
 }

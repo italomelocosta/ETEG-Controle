@@ -16,7 +16,7 @@ public interface DispensacaoServico {
     
     Dispensacao findByIDispensacao(Long id);
     
-    List<Dispensacao> listAllDispensacoes();
+    List<Dispensacao> findAllDispensacoes();
     
     void save(Dispensacao dispensacao);
     

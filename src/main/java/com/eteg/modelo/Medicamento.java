@@ -43,17 +43,21 @@ public class Medicamento implements Serializable {
     @Basic(optional = false)
     @Column(name = "idMedicamento")
     private Long idMedicamento;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "nome")
     private String nome;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "estoque")
     private int estoque;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicamentoidMedicamento")
     private List<Prescricao> prescricaoList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicamentoidMedicamento")
     private List<Dispensacao> dispensacaoList;
 

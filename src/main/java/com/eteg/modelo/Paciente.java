@@ -39,26 +39,31 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Paciente implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idPaciente")
     private Long idPaciente;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 80)
     @Column(name = "nome")
     private String nome;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 13)
     @Column(name = "cpf")
     private String cpf;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 12)
     @Column(name = "dtNasc")
     private String dtNasc;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pacienteidPaciente")
     private List<Prescricao> prescricaoList;
 

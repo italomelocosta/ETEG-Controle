@@ -42,11 +42,13 @@ public class Medico implements Serializable {
     @Basic(optional = false)
     @Column(name = "idMedico")
     private Long idMedico;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 80)
     @Column(name = "nome")
     private String nome;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicoidMedico")
     private List<Prescricao> prescricaoList;
 

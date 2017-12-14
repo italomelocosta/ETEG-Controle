@@ -44,20 +44,25 @@ public class Prescricao implements Serializable {
     @Basic(optional = false)
     @Column(name = "idPrescricao")
     private Long idPrescricao;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 12)
     @Column(name = "data")
     private String data;
+    
     @JoinColumn(name = "Paciente_idPaciente", referencedColumnName = "idPaciente")
     @ManyToOne(optional = false)
     private Paciente pacienteidPaciente;
+    
     @JoinColumn(name = "Medicamento_idMedicamento", referencedColumnName = "idMedicamento")
     @ManyToOne(optional = false)
     private Medicamento medicamentoidMedicamento;
+    
     @JoinColumn(name = "Medico_idMedico", referencedColumnName = "idMedico")
     @ManyToOne(optional = false)
     private Medico medicoidMedico;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "prescricaoidPrescricao")
     private List<Dispensacao> dispensacaoList;
 

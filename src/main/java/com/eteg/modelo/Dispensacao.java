@@ -40,14 +40,17 @@ public class Dispensacao implements Serializable {
     @Basic(optional = false)
     @Column(name = "idDiespensacao")
     private Long idDiespensacao;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 12)
     @Column(name = "data")
     private String data;
+    
     @JoinColumn(name = "Prescricao_idPrescricao", referencedColumnName = "idPrescricao")
     @ManyToOne(optional = false)
     private Prescricao prescricaoidPrescricao;
+    
     @JoinColumn(name = "Medicamento_idMedicamento", referencedColumnName = "idMedicamento")
     @ManyToOne(optional = false)
     private Medicamento medicamentoidMedicamento;

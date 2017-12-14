@@ -35,7 +35,7 @@ public class PacienteControle {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getMedicamentoById(@PathVariable Long id) {
+    public ResponseEntity getPacienteById(@PathVariable Long id) {
         Paciente paciente = pacienteServico.findByIdPaciente(id);
         return new ResponseEntity(paciente, HttpStatus.OK);
     }

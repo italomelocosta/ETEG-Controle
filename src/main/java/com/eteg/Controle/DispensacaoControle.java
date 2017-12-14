@@ -34,7 +34,7 @@ public class DispensacaoControle {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getMedicamentoById(@PathVariable Long id) {
+    public ResponseEntity getDispensacaoById(@PathVariable Long id) {
         Dispensacao dispensacao = dispensacaoServico.findByIDispensacao(id);
         return new ResponseEntity(dispensacao, HttpStatus.OK);
     }

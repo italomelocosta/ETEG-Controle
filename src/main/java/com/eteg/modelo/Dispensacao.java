@@ -5,6 +5,7 @@
  */
 package com.eteg.modelo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -19,7 +20,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -27,32 +27,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "dispensacao")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Dispensacao.findAll", query = "SELECT d FROM Dispensacao d")
-    , @NamedQuery(name = "Dispensacao.findByIdDiespensacao", query = "SELECT d FROM Dispensacao d WHERE d.idDiespensacao = :idDiespensacao")
-    , @NamedQuery(name = "Dispensacao.findByData", query = "SELECT d FROM Dispensacao d WHERE d.data = :data")})
 public class Dispensacao implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idDiespensacao")
     private Long idDiespensacao;
     
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 12)
     @Column(name = "data")
     private String data;
     
-    @JoinColumn(name = "Prescricao_idPrescricao", referencedColumnName = "idPrescricao")
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "Prescricao_idPrescricao")
+    @JsonBackReference
     private Prescricao prescricaoidPrescricao;
     
-    @JoinColumn(name = "Medicamento_idMedicamento", referencedColumnName = "idMedicamento")
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "Medicamento_idMedicamento")
+    @JsonBackReference
     private Medicamento medicamentoidMedicamento;
 
     public Dispensacao() {
@@ -97,31 +89,6 @@ public class Dispensacao implements Serializable {
 
     public void setMedicamentoidMedicamento(Medicamento medicamentoidMedicamento) {
         this.medicamentoidMedicamento = medicamentoidMedicamento;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idDiespensacao != null ? idDiespensacao.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Dispensacao)) {
-            return false;
-        }
-        Dispensacao other = (Dispensacao) object;
-        if ((this.idDiespensacao == null && other.idDiespensacao != null) || (this.idDiespensacao != null && !this.idDiespensacao.equals(other.idDiespensacao))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.eteg.modelo.Dispensacao[ idDiespensacao=" + idDiespensacao + " ]";
     }
     
 }

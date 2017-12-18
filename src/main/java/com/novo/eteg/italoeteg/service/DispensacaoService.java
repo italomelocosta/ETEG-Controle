@@ -8,11 +8,13 @@ package com.novo.eteg.italoeteg.service;
 import com.novo.eteg.italoeteg.model.Dispensacao;
 import java.io.Serializable;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Italo
  */
+@Repository
 public interface DispensacaoService extends CrudRepository<Dispensacao, Long> {
 
 }
